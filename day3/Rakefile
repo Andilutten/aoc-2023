@@ -1,0 +1,11 @@
+require 'rake'
+require 'rspec/core/rake_task'
+
+task :default => ['run']
+
+task :run do
+  require_relative "./lib/program"
+  puts Program::run(IO::readlines("./input.txt"))
+end
+
+RSpec::Core::RakeTask.new(:spec) 

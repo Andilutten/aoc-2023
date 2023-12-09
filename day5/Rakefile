@@ -1,0 +1,12 @@
+require 'rake'
+require 'rspec/core/rake_task'
+
+task :default => ['run']
+
+task :run do
+  require_relative "./lib/program"
+  print "Star 1: ", Program::star_one(IO::readlines("./input.txt")), "\n"
+  print "Star 2: ", Program::star_two(IO::readlines("./input.txt")), "\n"
+end
+
+RSpec::Core::RakeTask.new(:spec) 
