@@ -7,7 +7,11 @@ task :run do
   $LOAD_PATH << './lib'
   require "program"
   print "Star 1: ", Program::star_one(IO::readlines("./input.txt")), "\n"
+  starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
   print "Star 2: ", Program::star_two(IO::readlines("./input.txt")), "\n"
+  ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  elapsed = ending - starting
+  puts "Elapsed #{elapsed}"
 end
 
 RSpec::Core::RakeTask.new(:spec) 

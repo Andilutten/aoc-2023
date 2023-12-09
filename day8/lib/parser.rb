@@ -7,13 +7,16 @@ module Parser
   
   private
     def parse_instructions(line)
-      line.split("").map do |direction|
+      line.sub("\n", "").split("").map do |direction|
         direction == 'L' ? 0 : 1
       end
     end
     def parse_map(lines)
-      lines.reduce({}) do |memo, line|
+      lines.reduce({_starts: []}) do |memo, line|
         matches = line.match /(?<key>\S+) = \((?<left>\S+), (?<right>\S+)\)/ 
+        if matches["key"].end_with? "A"
+          memo[:_starts].push matches["key"]
+        end
         memo[matches["key"]] = [matches["left"], matches["right"]]
         memo
       end

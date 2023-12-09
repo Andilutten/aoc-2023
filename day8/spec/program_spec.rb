@@ -36,8 +36,20 @@ describe Program do
   describe '.star_two' do
     context 'given test input' do
       it "returns expected output" do
-        output = Program::star_two(IO::readlines("./test.txt"))
-        expect(output).to eq "Not implemented"
+        input = [
+          "LR",
+          "",
+          "11A = (11B, XXX)",
+          "11B = (XXX, 11Z)",
+          "11Z = (11B, XXX)",
+          "22A = (22B, XXX)",
+          "22B = (22C, 22C)",
+          "22C = (22Z, 22Z)",
+          "22Z = (22B, 22B)",
+          "XXX = (XXX, XXX)",
+        ]
+        output = Program::star_two(input)
+        expect(output).to eq 6
       end
     end
   end
