@@ -13,7 +13,7 @@ describe Program do
     context 'given test input' do
       it "returns expected output" do
         output = Program::star_two(IO::readlines("./test.txt"))
-        expect(output).to eq "Not implemented"
+        expect(output).to eq 2
       end
     end
   end

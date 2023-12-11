@@ -13,7 +13,11 @@ module Program
   end
 
   def self.star_two(lines)
-    "Not implemented"
+    lines.map do |line|
+      nums = line.split " "
+      nums = predict_backwards nums.map &:to_i
+      nums.first
+    end.sum
   end
 
 end
